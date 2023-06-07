@@ -19,8 +19,9 @@ pub fn mod_os2_us_weight_class(input_path: &str, output_path: &str, value_str: &
     let font_data = std::fs::read(input_path).unwrap();
     let font = FontRef::new(&font_data).unwrap();
 
-    //let os2 = font.os2().expect("missing OS/2 table");
-    alert(&format!("os2.us_weight_class value: {}!", value));
+    let os2 = font.os2().expect("missing OS/2 table");
+    alert(&format!("os2.us_weight_class(): {}!", os2.us_weight_class()));
+
     /*
     let mut builder: FontBuilder = FontBuilder::default();
 
